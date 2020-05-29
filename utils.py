@@ -65,8 +65,15 @@ def config_backup_get_log(args, filename):
 def process_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--seed', type=int, default=1000, help='random seed')
+    parser.add_argument('--method', type=str, default='mine', help='mutual information estimating methods mine|doe|xxxxxx')
+    parser.add_argument('--N', type=int, default=64, help='number of samples [%(default)d]')
     parser.add_argument('--dim', type=int, default=128, help='number of dimensions [%(default)d]')
     parser.add_argument('--rho', type=float, default=0.9, help='correlation coefficient [%(default)g]')
+    parser.add_argument('--hidden', type=int, default=100, help='dimension of hidden states [%(default)d]')
+    parser.add_argument('--layers', type=int, default=1, help='number of hidden layers [%(default)d]')
+    parser.add_argument('--lr', type=float, default=0.01, help='initial learning rate [%(default)g]')
+    parser.add_argument('--steps', type=int, default=1000, help='number of training steps [%(default)d]')
+    parser.add_argument('--clip', type=float, default=1, help='gradient clipping [%(default)g]')
     parser.add_argument('--suffix', type=str, default='test', help='suffix of result directory')
     args = parser.parse_args()
     
